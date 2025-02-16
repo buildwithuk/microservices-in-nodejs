@@ -30,7 +30,7 @@ router.put('/upload-picture', upload.single('file'), async (req, res) => {
             res.json({ message: 'File uploaded successfully!', url: url });
         }
     } catch (err) {
-
+        console.log(err)
         res.status(500).json({ message: "Probably some error occured so profile image could not be uploaded" });
     }
 

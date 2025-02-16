@@ -21,6 +21,9 @@ exports.doLogin = async function (req, res) {
 
     let uname = user.username;
     let id = user.id;
+    let email = user.email_address;
+    let name = "Souheil Khany"
+    let role = 'Administrator';
 
     // Find the user
     // Generate a JWT token
