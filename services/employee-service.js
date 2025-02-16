@@ -68,15 +68,18 @@ exports.getAllEmployees = async function (queryParams) {
 
     return employes.map((item) => {
         return {
-            id: 60,
+            id: item.id,
+            employeeId: item.employee_id,
+            photoUrl: item.photourl,
             firstName: item.first_name,
             middleName: item.middle_name,
             lastName: item.last_name,
             department: item.department,
             jobRole: item.job_role,
             country: item.country,
-            yos: item.yos,
-            status: item.status
+            yearsOfService: item.yearsofservice,
+            status: item.status,
+            fullName: item.full_name
         }
     });
 }
