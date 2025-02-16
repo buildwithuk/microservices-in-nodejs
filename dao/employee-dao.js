@@ -166,8 +166,8 @@ exports.getById = async function (employeeId) {
         dateOfBirth: employee.date_of_birth,
         cellPhone: employee.cell_phone,
         homePhone: employee.home_phone,
-        personalEmail: employee.personal_email,
-        imageUrl: employee.image_url,
+        email: employee.personal_email,
+        photoUrl: employee.image_url,
         employeeId: employee.employee_id,
         homeAddressId: employee.home_address_id
     };
