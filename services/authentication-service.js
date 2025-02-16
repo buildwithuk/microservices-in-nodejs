@@ -24,11 +24,12 @@ exports.doLogin = async function (req, res) {
     let email = user.email_address;
     let name = "Souheil Khany"
     let role = 'Administrator';
+    let photoUrl = 'https://helplogic-hr-files-photos.s3.us-east-2.amazonaws.com/1739693944937-389388215.jpg';
 
     // Find the user
     // Generate a JWT token
     // const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' })
-    const token = jwt.sign({ id: id, username: uname }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY })
+    const token = jwt.sign({ id: id, username: uname, email: email, name: name, role:role, imageUrl: photoUrl }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY })
 
     // Generate refresh token (long-lived, e.g., 7 days)
     const refreshToken = jwt.sign({ id: id }, JWT_REFRESH_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRY });
