@@ -187,10 +187,10 @@ exports.getById = async function (employeeId) {
     }
 
     if (workHistory) {
-        employeeToReturn.workHistory = [];
+        employeeToReturn.workAddress = [];
 
         workHistory.forEach(item => {
-            employeeToReturn.workHistory.push({
+            employeeToReturn.workAddress.push({
                 id: item.id,
                 companyName: item.company_name,
                 jobTitle: item.job_title,
@@ -265,13 +265,11 @@ exports.getById = async function (employeeId) {
             peopleManager: employmentInformation.people_manager,
             employmentType: employmentInformation.employment_type,
             employee: employmentInformation.employee_id,
-            manager: employmentInformation.managerId
-
+            manager: employmentInformation.manager_id
         };
     }
 
     return employeeToReturn;
-
 }
 
 exports.getSpecificUser = async function () {
