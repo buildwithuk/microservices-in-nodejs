@@ -210,19 +210,21 @@ exports.getById = async function (employeeId) {
             id: emergencyContact.id,
             name: emergencyContact.name,
             relationship: emergencyContact.relationship,
-            phone: emergencyContact.phone,
-            addressId: emergencyContact.address_id
+            phone: emergencyContact.phone
         };
 
         if (emergencyContactAddress) {
 
-            employeeToReturn.emergencyContact.street = emergencyContactAddress.street;
-            employeeToReturn.emergencyContact.country = emergencyContactAddress.country_id;
-            employeeToReturn.emergencyContact.postalCode = emergencyContactAddress.postal_code;
-            employeeToReturn.emergencyContact.city = emergencyContactAddress.city;
-            employeeToReturn.emergencyContact.state = emergencyContactAddress.state;
-            employeeToReturn.emergencyContact.streetNumber = emergencyContactAddress.street_number;
-            employeeToReturn.emergencyContact.unitNumber = emergencyContactAddress.unit_number;
+            employeeToReturn.emergencyContact.address = {};
+            
+            employeeToReturn.emergencyContact.address.addressId = emergencyContact.address_id;
+            employeeToReturn.emergencyContact.address.street = emergencyContactAddress.street;
+            employeeToReturn.emergencyContact.address.country = emergencyContactAddress.country_id;
+            employeeToReturn.emergencyContact.address.postalCode = emergencyContactAddress.postal_code;
+            employeeToReturn.emergencyContact.address.city = emergencyContactAddress.city;
+            employeeToReturn.emergencyContact.address.state = emergencyContactAddress.state;
+            employeeToReturn.emergencyContact.address.streetNumber = emergencyContactAddress.street_number;
+            employeeToReturn.emergencyContact.address.unitNumber = emergencyContactAddress.unit_number;
         }
     }
 
@@ -235,20 +237,23 @@ exports.getById = async function (employeeId) {
             id: worksiteInformation.id,
             worksiteName: worksiteInformation.worksite_name,
             worksitePhone: worksiteInformation.worksite_phone,
-            addressId: worksiteInformation.address_id,
             employeeId: worksiteInformation.employee_id
         };
 
         let worksiteAddress = await addressDao.findById(worksiteInformation.address_id);
 
         if (worksiteAddress) {
-            employeeToReturn.worksiteInformation.street = worksiteAddress.street;
-            employeeToReturn.worksiteInformation.country = worksiteAddress.country_id;
-            employeeToReturn.worksiteInformation.postalCode = worksiteAddress.postal_code;
-            employeeToReturn.worksiteInformation.city = worksiteAddress.city;
-            employeeToReturn.worksiteInformation.state = worksiteAddress.state;
-            employeeToReturn.worksiteInformation.streetNumber = worksiteAddress.street_number;
-            employeeToReturn.worksiteInformation.unitNumber = worksiteAddress.unit_number;
+
+            employeeToReturn.worksiteInformation.address = {};
+
+            employeeToReturn.worksiteInformation.address.addressId = worksiteInformation.address_id,
+            employeeToReturn.worksiteInformation.address.street = worksiteAddress.street;
+            employeeToReturn.worksiteInformation.address.country = worksiteAddress.country_id;
+            employeeToReturn.worksiteInformation.address.postalCode = worksiteAddress.postal_code;
+            employeeToReturn.worksiteInformation.address.city = worksiteAddress.city;
+            employeeToReturn.worksiteInformation.address.state = worksiteAddress.state;
+            employeeToReturn.worksiteInformation.address.streetNumber = worksiteAddress.street_number;
+            employeeToReturn.worksiteInformation.address.unitNumber = worksiteAddress.unit_number;
 
         }
     }
